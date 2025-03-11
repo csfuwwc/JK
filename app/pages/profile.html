@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK App - Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-gray-100">
+    <!-- iOS Status Bar -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-title">我的</div>
+        <div class="nav-actions">
+            <i class="fas fa-cog text-lg"></i>
+            <i class="fas fa-qrcode text-lg ml-4"></i>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Profile Avatar" class="profile-avatar">
+            <div class="profile-name">张小明</div>
+            <div class="profile-username">@xiaoming</div>
+            <div class="profile-bio">
+                科技爱好者 | iPhone 用户 | 摄影师 | 旅行者<br>
+                分享科技、摄影和旅行的日常
+            </div>
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <div class="profile-stat-value">128</div>
+                    <div class="profile-stat-label">动态</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">256</div>
+                    <div class="profile-stat-label">关注</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">12.5k</div>
+                    <div class="profile-stat-label">粉丝</div>
+                </div>
+            </div>
+            <div class="profile-actions flex justify-center">
+                <button class="primary-button flex-1 mx-2">编辑资料</button>
+                <button class="secondary-button flex-1 mx-2">分享</button>
+            </div>
+        </div>
+        
+        <!-- Content Tabs -->
+        <div class="segment-control mt-4">
+            <div class="segment-item active" data-segment="posts">
+                <i class="fas fa-th-large mr-1"></i> 动态
+            </div>
+            <div class="segment-item" data-segment="media">
+                <i class="fas fa-image mr-1"></i> 媒体
+            </div>
+            <div class="segment-item" data-segment="likes">
+                <i class="fas fa-heart mr-1"></i> 喜欢
+            </div>
+        </div>
+        
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-3 gap-0.5 mt-2">
+            <!-- Post 1 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 42
+                </div>
+            </div>
+            
+            <!-- Post 2 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 78
+                </div>
+            </div>
+            
+            <!-- Post 3 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 124
+                </div>
+            </div>
+            
+            <!-- Post 4 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 56
+                </div>
+            </div>
+            
+            <!-- Post 5 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 89
+                </div>
+            </div>
+            
+            <!-- Post 6 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 67
+                </div>
+            </div>
+            
+            <!-- Post 7 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 45
+                </div>
+            </div>
+            
+            <!-- Post 8 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1555596898-d0348c4d6f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 34
+                </div>
+            </div>
+            
+            <!-- Post 9 -->
+            <div class="aspect-square bg-white relative">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 right-1 text-white text-xs">
+                    <i class="fas fa-heart"></i> 92
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- iOS Tab Bar -->
+    <div class="ios-tab-bar">
+        <div class="tab-item" data-tab="home">
+            <i class="far fa-home tab-icon"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item" data-tab="explore">
+            <i class="far fa-compass tab-icon"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab-item" data-tab="create">
+            <i class="fas fa-plus-circle tab-icon"></i>
+            <span>发布</span>
+        </div>
+        <div class="tab-item" data-tab="notifications">
+            <i class="far fa-bell tab-icon"></i>
+            <span>通知</span>
+        </div>
+        <div class="tab-item active" data-tab="profile">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    
+    <script src="../js/common.js"></script>
+</body>
+</html> 

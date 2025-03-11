@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK App - Notifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-gray-100">
+    <!-- iOS Status Bar -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-title">通知</div>
+        <div class="nav-actions">
+            <i class="fas fa-cog text-lg"></i>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Segment Control -->
+        <div class="segment-control">
+            <div class="segment-item active" data-segment="all">全部</div>
+            <div class="segment-item" data-segment="comments">评论</div>
+            <div class="segment-item" data-segment="likes">赞</div>
+            <div class="segment-item" data-segment="mentions">提及</div>
+            <div class="segment-item" data-segment="follows">关注</div>
+        </div>
+        
+        <!-- Notifications List -->
+        <div class="bg-white rounded-lg mx-4 mt-4 overflow-hidden">
+            <!-- Today Section -->
+            <div class="px-4 py-2 bg-gray-50 text-sm text-gray-500 font-medium">
+                今天
+            </div>
+            
+            <!-- Notification Item - Like -->
+            <div class="notification-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm">
+                <div class="notification-content">
+                    <div class="notification-text">
+                        <span class="font-semibold">李小花</span> 赞了你的动态：<span class="text-gray-500">刚刚体验了新款iPhone 15 Pro，这个相机系统真的太强大了！</span>
+                    </div>
+                    <div class="notification-time">10分钟前</div>
+                </div>
+                <div class="w-10 h-10 rounded overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Post Thumbnail" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Notification Item - Comment -->
+            <div class="notification-item">
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm">
+                <div class="notification-content">
+                    <div class="notification-text">
+                        <span class="font-semibold">王大力</span> 评论了你的动态：<span class="text-blue-500">确实，尤其是那个新的空间视频功能，太酷了！</span>
+                    </div>
+                    <div class="notification-time">30分钟前</div>
+                </div>
+                <div class="w-10 h-10 rounded overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Post Thumbnail" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Notification Item - Follow -->
+            <div class="notification-item">
+                <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm">
+                <div class="notification-content">
+                    <div class="notification-text">
+                        <span class="font-semibold">赵小雨</span> 关注了你
+                    </div>
+                    <div class="notification-time">1小时前</div>
+                </div>
+                <button class="primary-button text-xs">关注</button>
+            </div>
+            
+            <!-- Yesterday Section -->
+            <div class="px-4 py-2 bg-gray-50 text-sm text-gray-500 font-medium">
+                昨天
+            </div>
+            
+            <!-- Notification Item - Mention -->
+            <div class="notification-item">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm">
+                <div class="notification-content">
+                    <div class="notification-text">
+                        <span class="font-semibold">张小明</span> 在动态中提到了你：<span class="text-gray-500">和 <span class="text-blue-500">@你</span> 一起体验了新款iPhone 15 Pro，真的很棒！</span>
+                    </div>
+                    <div class="notification-time">昨天 14:30</div>
+                </div>
+                <div class="w-10 h-10 rounded overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Post Thumbnail" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Notification Item - Like Multiple -->
+            <div class="notification-item">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm">
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5">
+                        <i class="fas fa-heart text-xs text-red-500"></i>
+                    </div>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">
+                        <span class="font-semibold">王大力</span> 和其他 <span class="font-semibold">12人</span> 赞了你的动态
+                    </div>
+                    <div class="notification-time">昨天 18:45</div>
+                </div>
+                <div class="w-10 h-10 rounded overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Post Thumbnail" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <!-- Earlier Section -->
+            <div class="px-4 py-2 bg-gray-50 text-sm text-gray-500 font-medium">
+                更早
+            </div>
+            
+            <!-- Notification Item - System -->
+            <div class="notification-item">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                    <i class="fas fa-bell text-sm"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">
+                        欢迎来到即刻！探索感兴趣的话题，与志同道合的人交流吧！
+                    </div>
+                    <div class="notification-time">3天前</div>
+                </div>
+            </div>
+            
+            <!-- Notification Item - New Features -->
+            <div class="notification-item">
+                <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white">
+                    <i class="fas fa-sparkles text-sm"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-text">
+                        即刻App更新了！查看最新功能和改进。
+                    </div>
+                    <div class="notification-time">5天前</div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">查看</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- iOS Tab Bar -->
+    <div class="ios-tab-bar">
+        <div class="tab-item" data-tab="home">
+            <i class="far fa-home tab-icon"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item" data-tab="explore">
+            <i class="far fa-compass tab-icon"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab-item" data-tab="create">
+            <i class="fas fa-plus-circle tab-icon"></i>
+            <span>发布</span>
+        </div>
+        <div class="tab-item active" data-tab="notifications">
+            <i class="fas fa-bell tab-icon"></i>
+            <span>通知</span>
+        </div>
+        <div class="tab-item" data-tab="profile">
+            <i class="far fa-user tab-icon"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    
+    <script src="../js/common.js"></script>
+</body>
+</html> 

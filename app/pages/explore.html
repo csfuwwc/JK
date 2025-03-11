@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK App - Explore</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-gray-100">
+    <!-- iOS Status Bar -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-title">发现</div>
+        <div class="nav-actions">
+            <i class="fas fa-search text-lg"></i>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="搜索话题、用户或内容" class="search-input">
+        </div>
+        
+        <!-- Categories -->
+        <div class="explore-categories">
+            <span class="topic-pill active">全部</span>
+            <span class="topic-pill">科技</span>
+            <span class="topic-pill">设计</span>
+            <span class="topic-pill">音乐</span>
+            <span class="topic-pill">电影</span>
+            <span class="topic-pill">游戏</span>
+            <span class="topic-pill">美食</span>
+            <span class="topic-pill">旅行</span>
+            <span class="topic-pill">摄影</span>
+            <span class="topic-pill">阅读</span>
+        </div>
+        
+        <!-- Trending Section -->
+        <div class="explore-section">
+            <div class="explore-section-header">热门话题</div>
+            <div class="explore-grid">
+                <div class="explore-card">
+                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Topic Image" class="explore-card-image">
+                    <div class="explore-card-overlay">
+                        <div class="explore-card-title">iPhone 15 Pro</div>
+                        <div class="explore-card-count">2.3k 人正在讨论</div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Topic Image" class="explore-card-image">
+                    <div class="explore-card-overlay">
+                        <div class="explore-card-title">奥本海默</div>
+                        <div class="explore-card-count">1.8k 人正在讨论</div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Topic Image" class="explore-card-image">
+                    <div class="explore-card-overlay">
+                        <div class="explore-card-title">人工智能</div>
+                        <div class="explore-card-count">3.5k 人正在讨论</div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Topic Image" class="explore-card-image">
+                    <div class="explore-card-overlay">
+                        <div class="explore-card-title">咖啡文化</div>
+                        <div class="explore-card-count">1.2k 人正在讨论</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recommended Communities -->
+        <div class="explore-section">
+            <div class="explore-section-header">推荐圈子</div>
+            <div class="px-4">
+                <!-- Community 1 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Community Icon" class="w-12 h-12 rounded-lg mr-3">
+                            <div>
+                                <div class="font-semibold text-base">科技爱好者</div>
+                                <div class="text-gray-500 text-sm">5.2万成员 · 科技圈</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">加入</button>
+                    </div>
+                    <div class="mt-3 text-sm text-gray-700">
+                        分享最新科技资讯、产品评测和技术讨论的社区
+                    </div>
+                </div>
+                
+                <!-- Community 2 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Community Icon" class="w-12 h-12 rounded-lg mr-3">
+                            <div>
+                                <div class="font-semibold text-base">电影爱好者</div>
+                                <div class="text-gray-500 text-sm">3.8万成员 · 影视圈</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">加入</button>
+                    </div>
+                    <div class="mt-3 text-sm text-gray-700">
+                        讨论最新电影、经典作品和电影幕后故事的社区
+                    </div>
+                </div>
+                
+                <!-- Community 3 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1555596898-d0348c4d6f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Community Icon" class="w-12 h-12 rounded-lg mr-3">
+                            <div>
+                                <div class="font-semibold text-base">设计师联盟</div>
+                                <div class="text-gray-500 text-sm">2.6万成员 · 设计圈</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">加入</button>
+                    </div>
+                    <div class="mt-3 text-sm text-gray-700">
+                        UI/UX设计师交流作品、灵感和设计趋势的社区
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Popular Users -->
+        <div class="explore-section">
+            <div class="explore-section-header">推荐关注</div>
+            <div class="px-4">
+                <!-- User 1 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <div class="font-semibold text-base">张小明</div>
+                                <div class="text-gray-500 text-sm">科技博主 · 12.5万粉丝</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">关注</button>
+                    </div>
+                </div>
+                
+                <!-- User 2 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <div class="font-semibold text-base">李小花</div>
+                                <div class="text-gray-500 text-sm">美食博主 · 8.3万粉丝</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">关注</button>
+                    </div>
+                </div>
+                
+                <!-- User 3 -->
+                <div class="card p-4 mb-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="w-12 h-12 rounded-full mr-3">
+                            <div>
+                                <div class="font-semibold text-base">王大力</div>
+                                <div class="text-gray-500 text-sm">程序员 · 5.7万粉丝</div>
+                            </div>
+                        </div>
+                        <button class="primary-button text-sm">关注</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- iOS Tab Bar -->
+    <div class="ios-tab-bar">
+        <div class="tab-item" data-tab="home">
+            <i class="far fa-home tab-icon"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item active" data-tab="explore">
+            <i class="fas fa-compass tab-icon"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab-item" data-tab="create">
+            <i class="fas fa-plus-circle tab-icon"></i>
+            <span>发布</span>
+        </div>
+        <div class="tab-item" data-tab="notifications">
+            <i class="far fa-bell tab-icon"></i>
+            <span>通知</span>
+        </div>
+        <div class="tab-item" data-tab="profile">
+            <i class="far fa-user tab-icon"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    
+    <script src="../js/common.js"></script>
+</body>
+</html> 

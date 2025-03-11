@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK App - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-gray-100">
+    <!-- iOS Status Bar -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-title">首页</div>
+        <div class="nav-actions">
+            <i class="far fa-bell text-lg"></i>
+            <i class="far fa-envelope text-lg"></i>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Topic Pills -->
+        <div class="bg-white p-3 overflow-x-auto whitespace-nowrap">
+            <span class="topic-pill active">推荐</span>
+            <span class="topic-pill">热门</span>
+            <span class="topic-pill">关注</span>
+            <span class="topic-pill">科技</span>
+            <span class="topic-pill">设计</span>
+            <span class="topic-pill">音乐</span>
+            <span class="topic-pill">电影</span>
+            <span class="topic-pill">游戏</span>
+            <span class="topic-pill">美食</span>
+        </div>
+        
+        <!-- Posts -->
+        <div class="posts-container mt-2">
+            <!-- Post 1 -->
+            <div class="card">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="User Avatar" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">张小明</div>
+                        <div class="post-time">2小时前</div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-text">
+                        刚刚体验了新款iPhone 15 Pro，这个相机系统真的太强大了！尤其是那个新的空间视频功能，简直是为Apple Vision Pro量身定制的。#科技 #Apple
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post-image">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action like-button">
+                        <i class="far fa-heart"></i>
+                        <span class="like-count">42</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>18</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="fas fa-retweet"></i>
+                        <span>5</span>
+                    </div>
+                    <div class="post-action bookmark-button">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post 2 -->
+            <div class="card">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="User Avatar" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">李小花</div>
+                        <div class="post-time">3小时前</div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-text">
+                        今天在上海发现了一家超棒的咖啡店，环境很安静，适合工作。而且他们的拿铁艺术简直是艺术品！推荐给大家 ☕️ #咖啡 #上海
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post-image">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action like-button">
+                        <i class="far fa-heart"></i>
+                        <span class="like-count">78</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>32</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="fas fa-retweet"></i>
+                        <span>12</span>
+                    </div>
+                    <div class="post-action bookmark-button">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post 3 -->
+            <div class="card">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="User Avatar" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">王大力</div>
+                        <div class="post-time">5小时前</div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-text">
+                        最近在学习Swift UI，感觉比起传统的UIKit开发效率提高了不少。有没有同样在用Swift UI的朋友，可以交流一下心得？#编程 #iOS开发
+                    </div>
+                </div>
+                <div class="post-actions">
+                    <div class="post-action like-button">
+                        <i class="far fa-heart"></i>
+                        <span class="like-count">36</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>24</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="fas fa-retweet"></i>
+                        <span>3</span>
+                    </div>
+                    <div class="post-action bookmark-button">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post 4 -->
+            <div class="card">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="User Avatar" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">赵小雨</div>
+                        <div class="post-time">昨天</div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-text">
+                        刚刚看完《奥本海默》，诺兰的电影总是能让人深思。这部电影不仅仅是关于原子弹的发明，更是关于科学、道德和责任的深刻思考。强烈推荐！⭐️⭐️⭐️⭐️⭐️ #电影 #诺兰
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Post Image" class="post-image">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action like-button">
+                        <i class="far fa-heart"></i>
+                        <span class="like-count">124</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>56</span>
+                    </div>
+                    <div class="post-action">
+                        <i class="fas fa-retweet"></i>
+                        <span>28</span>
+                    </div>
+                    <div class="post-action bookmark-button">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- iOS Tab Bar -->
+    <div class="ios-tab-bar">
+        <div class="tab-item active" data-tab="home">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item" data-tab="explore">
+            <i class="far fa-compass tab-icon"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab-item" data-tab="create">
+            <i class="fas fa-plus-circle tab-icon"></i>
+            <span>发布</span>
+        </div>
+        <div class="tab-item" data-tab="notifications">
+            <i class="far fa-bell tab-icon"></i>
+            <span>通知</span>
+        </div>
+        <div class="tab-item" data-tab="profile">
+            <i class="far fa-user tab-icon"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    
+    <script src="../js/common.js"></script>
+</body>
+</html> 

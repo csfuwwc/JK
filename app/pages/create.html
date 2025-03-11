@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK App - Create Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-white">
+    <!-- iOS Status Bar -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- Create Post Header -->
+    <div class="create-post-header">
+        <div class="create-post-actions">
+            <button class="text-gray-500">取消</button>
+        </div>
+        <div class="create-post-title">发布动态</div>
+        <div class="create-post-actions">
+            <button class="text-blue-500 font-semibold">发布</button>
+        </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="content-area bg-white">
+        <!-- User Info -->
+        <div class="flex items-center px-4 py-3 border-b border-gray-200">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="avatar-sm mr-3">
+            <div>
+                <div class="text-sm font-semibold">张小明</div>
+                <div class="text-xs text-gray-500">
+                    <span class="bg-gray-200 rounded-full px-2 py-1">公开</span>
+                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Post Content -->
+        <textarea class="create-post-textarea" placeholder="分享你的想法..."></textarea>
+        
+        <!-- Image Preview (if image is selected) -->
+        <div class="px-4 pb-4">
+            <div class="relative inline-block">
+                <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Selected Image" class="rounded-lg w-24 h-24 object-cover">
+                <button class="absolute -top-2 -right-2 bg-gray-800 bg-opacity-70 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Topic Selection -->
+        <div class="px-4 py-3 border-t border-gray-200">
+            <div class="text-sm font-semibold mb-2">添加话题</div>
+            <div class="flex flex-wrap">
+                <span class="topic-pill active"># 科技</span>
+                <span class="topic-pill"># 添加话题</span>
+            </div>
+        </div>
+        
+        <!-- Location -->
+        <div class="px-4 py-3 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-sm">所在位置</div>
+            <div class="flex items-center text-gray-500">
+                <span class="text-sm mr-1">上海市</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+            </div>
+        </div>
+        
+        <!-- Who Can Comment -->
+        <div class="px-4 py-3 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-sm">谁可以评论</div>
+            <div class="flex items-center text-gray-500">
+                <span class="text-sm mr-1">所有人</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+            </div>
+        </div>
+        
+        <!-- Post Tools -->
+        <div class="create-post-tools">
+            <div class="create-post-tool">
+                <i class="far fa-image"></i>
+            </div>
+            <div class="create-post-tool">
+                <i class="far fa-smile"></i>
+            </div>
+            <div class="create-post-tool">
+                <i class="fas fa-at"></i>
+            </div>
+            <div class="create-post-tool">
+                <i class="fas fa-hashtag"></i>
+            </div>
+            <div class="create-post-tool">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- iOS Tab Bar (hidden in create mode) -->
+    <div class="ios-tab-bar" style="opacity: 0.5;">
+        <div class="tab-item" data-tab="home">
+            <i class="far fa-home tab-icon"></i>
+            <span>首页</span>
+        </div>
+        <div class="tab-item" data-tab="explore">
+            <i class="far fa-compass tab-icon"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab-item active" data-tab="create">
+            <i class="fas fa-plus-circle tab-icon"></i>
+            <span>发布</span>
+        </div>
+        <div class="tab-item" data-tab="notifications">
+            <i class="far fa-bell tab-icon"></i>
+            <span>通知</span>
+        </div>
+        <div class="tab-item" data-tab="profile">
+            <i class="far fa-user tab-icon"></i>
+            <span>我的</span>
+        </div>
+    </div>
+    
+    <script src="../js/common.js"></script>
+</body>
+</html> 

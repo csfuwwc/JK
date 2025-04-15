@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>驾考通APP原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4f46e5",
+              secondary: "#10b981",
+              light: "#f0f4f8",
+              dark: "#1e293b",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .phone-mockup {
+        width: 100%;
+        max-width: 390px;
+        height: 844px;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        background: #f0f4f8;
+        margin: 20px auto;
+      }
+      .status-bar {
+        height: 44px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #1e293b;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .screen-area {
+        height: calc(100% - 100px);
+        overflow-y: auto;
+        background: #f8fafc;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-bar {
+        height: 56px;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .tab-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #64748b;
+        font-size: 10px;
+        transition: all 0.2s;
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+      .tab-item.active {
+        color: #4f46e5;
+        background: rgba(79, 70, 229, 0.05);
+      }
+      .tab-item i {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+      .subject-tabs {
+        display: flex;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 12px;
+      }
+      .subject-tab {
+        padding: 8px 16px;
+        font-size: 14px;
+        color: #64748b;
+        position: relative;
+      }
+      .subject-tab.active {
+        color: #4f46e5;
+        font-weight: 500;
+      }
+      .subject-tab.active:after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 16px;
+        right: 16px;
+        height: 2px;
+        background: #4f46e5;
+      }
+      .mock-img {
+        background: linear-gradient(
+          45deg,
+          #e5e7eb 25%,
+          #f3f4f6 50%,
+          #e5e7eb 75%
+        );
+        background-size: 200% 200%;
+        animation: gradient 2s ease infinite;
+        border-radius: 8px;
+      }
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .option-item {
+        transition: all 0.2s;
+        border: 1px solid #e2e8f0;
+      }
+      .option-item:hover {
+        border-color: #c7d2fe;
+        background: #f8fafc;
+      }
+
+      /* 修复移动端点击高亮 */
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* 修复移动端滚动条 */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex justify-center items-center min-h-screen p-4 bg-gray-100">
+    <div class="phone-mockup">
+      <!-- 状态栏 -->
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="flex space-x-2">
+          <i class="fas fa-signal"></i>
+          <i class="fas fa-wifi"></i>
+          <i class="fas fa-battery-full"></i>
+        </div>
+      </div>
+
+      <!-- 主内容区 -->
+      <div class="screen-area" id="screenArea"></div>
+
+      <!-- 底部导航 -->
+      <div class="tab-bar">
+        <a
+          href="#"
+          class="tab-item active"
+          onclick="loadPage('home')"
+          data-page="home"
+        >
+          <i class="fas fa-home"></i>
+          <span>首页</span>
+        </a>
+        <a
+          href="#"
+          class="tab-item"
+          onclick="loadPage('learn')"
+          data-page="learn"
+        >
+          <i class="fas fa-book-open"></i>
+          <span>学习</span>
+        </a>
+        <a
+          href="#"
+          class="tab-item"
+          onclick="loadPage('exam')"
+          data-page="exam"
+        >
+          <i class="fas fa-clipboard-list"></i>
+          <span>考试</span>
+        </a>
+        <a
+          href="#"
+          class="tab-item"
+          onclick="loadPage('drive')"
+          data-page="drive"
+        >
+          <i class="fas fa-car"></i>
+          <span>实战</span>
+        </a>
+        <a
+          href="#"
+          class="tab-item"
+          onclick="loadPage('profile')"
+          data-page="profile"
+        >
+          <i class="fas fa-user"></i>
+          <span>我的</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 所有页面内容 -->
+    <script>
+      // 页面数据
+      const pages = {
+        home: `
+                <div class="p-4">
+                    <div class="card p-4 mb-4">
+                        <div class="subject-tabs">
+                            <div class="subject-tab active" onclick="switchSubject('k1')">科目一</div>
+                            <div class="subject-tab" onclick="switchSubject('k4')">科目四</div>
+                        </div>
+                        
+                        <div id="subject-k1">
+                            <div class="flex justify-between items-center mb-3">
+                                <h2 class="font-bold text-lg text-dark">我的学习进度</h2>
+                                <span class="text-sm text-primary">科目一</span>
+                            </div>
+                            <div class="flex justify-around text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-primary">68%</div>
+                                    <div class="text-xs text-gray-500">总进度</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-dark">87%</div>
+                                    <div class="text-xs text-gray-500">正确率</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-dark">124</div>
+                                    <div class="text-xs text-gray-500">已做题</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="subject-k4" class="hidden">
+                            <div class="flex justify-between items-center mb-3">
+                                <h2 class="font-bold text-lg text-dark">我的学习进度</h2>
+                                <span class="text-sm text-secondary">科目四</span>
+                            </div>
+                            <div class="flex justify-around text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-secondary">42%</div>
+                                    <div class="text-xs text-gray-500">总进度</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-dark">76%</div>
+                                    <div class="text-xs text-gray-500">正确率</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-dark">89</div>
+                                    <div class="text-xs text-gray-500">已做题</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="card p-4 flex items-center bg-blue-50">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-bolt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-dark">智能刷题</div>
+                                <div class="text-xs text-gray-500">薄弱环节专项</div>
+                            </div>
+                        </div>
+                        <div class="card p-4 flex items-center bg-purple-50">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-clipboard-check text-purple-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-dark">模拟考试</div>
+                                <div class="text-xs text-gray-500">全真环境测试</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-lg mb-2 text-dark">今日推荐</h3>
+                    <div class="card overflow-hidden mb-4">
+                        <div class="mock-img w-full h-32"></div>
+                        <div class="p-3">
+                            <div class="font-medium mb-1 text-dark">交通标志专项</div>
+                            <div class="text-xs text-gray-500 mb-2">掌握所有禁令标志和指示标志</div>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>45% 已完成</span>
+                                <span>32/70题</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function switchSubject(subject) {
+                        document.querySelectorAll('.subject-tab').forEach(tab => {
+                            tab.classList.remove('active');
+                        });
+                        event.currentTarget.classList.add('active');
+                        
+                        document.getElementById('subject-k1').classList.add('hidden');
+                        document.getElementById('subject-k4').classList.add('hidden');
+                        document.getElementById('subject-' + subject).classList.remove('hidden');
+                    }
+                <\/script>
+            `,
+        learn: `
+                <div class="p-4">
+                    <h2 class="text-xl font-bold mb-4 text-dark">章节学习</h2>
+                    <div class="space-y-3">
+                        <div class="card p-4 flex items-center" onclick="loadPage('question')">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-traffic-light text-green-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-dark">交通信号</div>
+                                <div class="text-xs text-gray-500">已完成 78%</div>
+                                <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                    <div class="bg-green-500 h-1 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="card p-4 flex items-center" onclick="loadPage('question')">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-sign text-blue-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-dark">道路标志</div>
+                                <div class="text-xs text-gray-500">已完成 45%</div>
+                                <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                    <div class="bg-blue-500 h-1 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="card p-4 flex items-center" onclick="loadPage('question')">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-car-crash text-orange-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-dark">安全驾驶</div>
+                                <div class="text-xs text-gray-500">已完成 32%</div>
+                                <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                    <div class="bg-orange-500 h-1 rounded-full" style="width: 32%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="card p-4 flex items-center" onclick="loadPage('question')">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-car text-purple-500 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-dark">车辆功能</div>
+                                <div class="text-xs text-gray-500">已完成 28%</div>
+                                <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                    <div class="bg-purple-500 h-1 rounded-full" style="width: 28%"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            `,
+        exam: `
+                <div class="p-4">
+                    <h2 class="text-xl font-bold mb-4 text-dark">模拟考试</h2>
+                    <div class="card p-6 text-center mb-4">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clipboard-list text-blue-500 text-3xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-dark">全真模拟考试</h3>
+                        <p class="text-sm text-gray-500 mb-4">100题 | 45分钟 | 90分及格</p>
+                        <button class="w-full py-3 bg-primary text-white rounded-lg font-medium" onclick="loadPage('question')">
+                            开始考试
+                        </button>
+                    </div>
+                    
+                    <h3 class="font-bold text-lg mb-3 text-dark">历史成绩</h3>
+                    <div class="card p-4 mb-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <div class="font-medium text-dark">最新模拟考</div>
+                                <div class="text-xs text-gray-500">2023-07-15</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-green-500">92分</div>
+                                <div class="text-xs text-gray-500">正确率92%</div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-green-500 h-1.5 rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <div class="font-medium text-dark">科目四模拟</div>
+                                <div class="text-xs text-gray-500">2023-07-10</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-green-500">88分</div>
+                                <div class="text-xs text-gray-500">正确率88%</div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-green-500 h-1.5 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            `,
+        drive: `
+                <div class="p-4">
+                    <h2 class="text-xl font-bold mb-4 text-dark">驾驶实战</h2>
+                    
+                    <!-- 智能驾驶专题 -->
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-bold text-lg text-dark">智能驾驶系统</h3>
+                            <a href="#" class="text-sm text-primary">全部 ></a>
+                        </div>
+                        
+                        <div class="card p-4 mb-4">
+                            <div class="flex items-start mb-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-robot text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">特斯拉 Autopilot</h4>
+                                    <p class="text-sm text-gray-500">L2级自动驾驶系统，包含自动转向、加速和制动</p>
+                                </div>
+                            </div>
+                            <div class="text-sm text-dark">
+                                <p class="mb-2"><span class="font-medium">注意事项：</span>需保持手在方向盘上，系统无法识别静态障碍物</p>
+                                <p><span class="font-medium">最新版本：</span>FSD Beta V11.4.2</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-4 mb-4">
+                            <div class="flex items-start mb-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-car-side text-green-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">小鹏 XNGP</h4>
+                                    <p class="text-sm text-gray-500">全场景智能辅助驾驶，支持城市/高速NGP</p>
+                                </div>
+                            </div>
+                            <div class="text-sm text-dark">
+                                <p class="mb-2"><span class="font-medium">注意事项：</span>复杂路口需人工接管，夜间识别能力下降</p>
+                                <p><span class="font-medium">覆盖城市：</span>已开放北京、上海、广州等20城</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <div class="flex items-start mb-3">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-eye text-purple-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark">华为 ADS 2.0</h4>
+                                    <p class="text-sm text-gray-500">不依赖高精地图的智能驾驶系统</p>
+                                </div>
+                            </div>
+                            <div class="text-sm text-dark">
+                                <p class="mb-2"><span class="font-medium">注意事项：</span>施工路段需谨慎，雨雪天气性能受限</p>
+                                <p><span class="font-medium">特色功能：</span>代客泊车、城区巡航</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 传统驾驶技巧 -->
+                    <div class="card overflow-hidden mb-4">
+                        <div class="mock-img w-full h-40"></div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-2 text-dark">雨天驾驶技巧</h3>
+                            <p class="text-sm text-gray-500 mb-3">掌握雨天行车安全要点，避免打滑事故</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-eye mr-1"></i> 1.2k
+                                </div>
+                                <button class="text-sm text-primary font-medium">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="card p-3">
+                            <div class="mock-img w-full h-20 rounded mb-2"></div>
+                            <div class="text-sm font-medium text-dark">夜间驾驶</div>
+                            <div class="text-xs text-gray-500">灯光使用技巧</div>
+                        </div>
+                        <div class="card p-3">
+                            <div class="mock-img w-full h-20 rounded mb-2"></div>
+                            <div class="text-sm font-medium text-dark">高速行车</div>
+                            <div class="text-xs text-gray-500">变道注意事项</div>
+                        </div>
+                    </div>
+                </div>
+            `,
+        question: `
+                <div class="p-4 h-full flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center" onclick="loadPage('learn')">
+                            <i class="fas fa-chevron-left text-gray-500"></i>
+                        </button>
+                        <div class="flex-1 mx-2">
+                            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                <div class="bg-primary h-1.5 rounded-full" style="width: 23%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">23/100</div>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto">
+                        <div class="card p-4 mb-4">
+                            <div class="text-sm text-primary mb-2">判断题</div>
+                            <div class="text-lg font-medium mb-6 text-dark">
+                                驾驶机动车在道路上超车完毕驶回原车道时需提前开启右转向灯。
+                            </div>
+                            <div class="flex justify-center mb-4">
+                                <div class="mock-img h-32 w-full rounded-lg"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <button class="w-full py-3 px-4 bg-white rounded-lg border border-gray-200 text-left flex items-center option-item">
+                                <div class="w-6 h-6 rounded-full border border-gray-300 mr-3 flex-shrink-0"></div>
+                                <span class="text-dark">正确</span>
+                            </button>
+                            <button class="w-full py-3 px-4 bg-white rounded-lg border border-gray-200 text-left flex items-center option-item">
+                                <div class="w-6 h-6 rounded-full border border-gray-300 mr-3 flex-shrink-0"></div>
+                                <span class="text-dark">错误</span>
+                            </button>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-xl p-4 hidden" id="explanation">
+                            <div class="font-medium text-primary mb-2">
+                                <i class="fas fa-lightbulb mr-1"></i> 题目解析
+                            </div>
+                            <div class="text-sm text-dark">
+                                根据《道路交通安全法实施条例》第五十七条，机动车超车时应提前开启左转向灯，变换使用远、近光灯或者鸣喇叭。在没有道路中心线或者同方向只有1条机动车道的道路上，前车遇后车发出超车信号时，在条件许可的情况下，应当降低速度、靠右让路。后车应当在确认有充足的安全距离后，从前车的左侧超越，在与被超车辆拉开必要的安全距离后，开启右转向灯，驶回原车道。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-3 pt-2 border-t border-gray-100">
+                        <button class="flex-1 py-2 bg-gray-100 rounded-lg text-gray-500">
+                            <i class="fas fa-bookmark mr-1"></i> 收藏
+                        </button>
+                        <button class="flex-1 py-2 bg-primary text-white rounded-lg" onclick="document.getElementById('explanation').classList.toggle('hidden')">
+                            查看解析
+                        </button>
+                        <button class="flex-1 py-2 bg-green-500 text-white rounded-lg" onclick="loadPage('question')">
+                            下一题 <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            `,
+        profile: `
+                <div class="p-4">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-purple-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-dark">驾考学员</h2>
+                            <p class="text-sm text-gray-500">已学习12天</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 mb-4">
+                        <h3 class="font-bold mb-3 text-dark">学习数据</h3>
+                        <div class="flex justify-between mb-3">
+                            <div>
+                                <div class="text-xs text-gray-500">累计学习</div>
+                                <div class="font-medium text-dark">8小时24分</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">做题总数</div>
+                                <div class="font-medium text-dark">856题</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500">正确率</div>
+                                <div class="font-medium text-dark">89%</div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 89%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <a href="#" class="card p-4 flex items-center justify-between" onclick="loadPage('wrong')">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-bookmark text-blue-500"></i>
+                                </div>
+                                <span class="text-dark">我的收藏</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </a>
+                        <a href="#" class="card p-4 flex items-center justify-between" onclick="loadPage('wrong')">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-times-circle text-red-500"></i>
+                                </div>
+                                <span class="text-dark">错题本</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </a>
+                        <a href="#" class="card p-4 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-cog text-green-500"></i>
+                                </div>
+                                <span class="text-dark">设置</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </a>
+                    </div>
+                </div>
+            `,
+        wrong: `
+                <div class="p-4">
+                    <div class="flex items-center mb-4">
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mr-2" onclick="loadPage('profile')">
+                            <i class="fas fa-chevron-left text-gray-500"></i>
+                        </button>
+                        <h2 class="text-xl font-bold text-dark">错题本</h2>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="card p-4" onclick="loadPage('question')">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="text-sm text-primary">判断题</div>
+                                <div class="text-xs text-gray-500">错误3次</div>
+                            </div>
+                            <div class="text-dark mb-2">驾驶机动车在道路上超车完毕驶回原车道时需提前开启右转向灯。</div>
+                            <div class="text-xs text-gray-500">最近错误：2023-07-15</div>
+                        </div>
+                        
+                        <div class="card p-4" onclick="loadPage('question')">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="text-sm text-primary">单选题</div>
+                                <div class="text-xs text-gray-500">错误2次</div>
+                            </div>
+                            <div class="text-dark mb-2">这个标志是何含义？(图中为注意行人标志)</div>
+                            <div class="text-xs text-gray-500">最近错误：2023-07-14</div>
+                        </div>
+                        
+                        <div class="card p-4" onclick="loadPage('question')">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="text-sm text-primary">多选题</div>
+                                <div class="text-xs text-gray-500">错误4次</div>
+                            </div>
+                            <div class="text-dark mb-2">雨天安全驾驶的注意事项有哪些？</div>
+                            <div class="text-xs text-gray-500">最近错误：2023-07-12</div>
+                        </div>
+                    </div>
+                </div>
+            `,
+      };
+
+      // 加载页面函数
+      function loadPage(page) {
+        document.querySelectorAll(".tab-item").forEach((item) => {
+          item.classList.remove("active", "text-primary");
+          item.classList.add("text-gray-500");
+          if (item.getAttribute("data-page") === page) {
+            item.classList.add("active", "text-primary");
+          }
+        });
+        document.getElementById("screenArea").innerHTML =
+          pages[page] || pages.home;
+
+        // 修复滚动条位置
+        document.getElementById("screenArea").scrollTop = 0;
+
+        if (page === "learn") {
+          document.querySelectorAll(".card").forEach((card) => {
+            card.addEventListener("click", function () {
+              loadPage("question");
+            });
+          });
+        }
+        if (page === "question") {
+          document.querySelectorAll(".option-item").forEach((item) => {
+            item.addEventListener("click", function () {
+              this.classList.toggle("bg-blue-50");
+              this.classList.toggle("border-blue-200");
+              const radio = this.querySelector("div");
+              radio.classList.toggle("border-blue-500");
+              if (radio.classList.contains("border-blue-500")) {
+                radio.innerHTML = '<i class="fas fa-check text-blue-500"></i>';
+              } else {
+                radio.innerHTML = "";
+              }
+            });
+          });
+        }
+      }
+
+      // 科目切换函数
+      function switchSubject(subject) {
+        document.querySelectorAll(".subject-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        event.currentTarget.classList.add("active");
+        document.getElementById("subject-k1").classList.add("hidden");
+        document.getElementById("subject-k4").classList.add("hidden");
+        document
+          .getElementById("subject-" + subject)
+          .classList.remove("hidden");
+      }
+
+      // 初始加载首页
+      window.onload = function () {
+        loadPage("home");
+      };
+    </script>
+  </body>
+</html>

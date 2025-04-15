@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>章节学习 - 驾考通</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4f46e5",
+                        secondary: "#10b981",
+                        light: "#f0f4f8",
+                        dark: "#1e293b",
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .tab-bar {
+            height: 56px;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748b;
+            font-size: 10px;
+            transition: all 0.2s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        .tab-item.active {
+            color: #4f46e5;
+            background: rgba(79, 70, 229, 0.05);
+        }
+        .tab-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="bg-light min-h-screen pb-16">
+    <div class="p-4">
+        <div class="card p-4 mb-4">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-bold text-lg text-dark">交通信号</h2>
+                <span class="text-sm text-primary">已完成 78%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-primary h-1.5 rounded-full" style="width: 78%"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-traffic-light text-orange-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">交通信号灯</div>
+                    <div class="text-xs text-gray-500">已完成 85%</div>
+                </div>
+            </div>
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-sign text-blue-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">交通标志</div>
+                    <div class="text-xs text-gray-500">已完成 72%</div>
+                </div>
+            </div>
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-hand-paper text-green-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">交警手势</div>
+                    <div class="text-xs text-gray-500">已完成 65%</div>
+                </div>
+            </div>
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-road text-purple-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">道路标线</div>
+                    <div class="text-xs text-gray-500">已完成 90%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4 mb-4">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-bold text-lg text-dark">安全驾驶</h2>
+                <span class="text-sm text-secondary">已完成 45%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-secondary h-1.5 rounded-full" style="width: 45%"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">危险驾驶</div>
+                    <div class="text-xs text-gray-500">已完成 30%</div>
+                </div>
+            </div>
+            <div class="card p-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-car-crash text-yellow-500 text-xl"></i>
+                </div>
+                <div class="text-center">
+                    <div class="font-medium text-dark mb-1">事故处理</div>
+                    <div class="text-xs text-gray-500">已完成 60%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="#" class="tab-item" onclick="loadPage('home')">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item active" onclick="loadPage('learn')">
+            <i class="fas fa-book-open"></i>
+            <span>学习</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('exam')">
+            <i class="fas fa-clipboard-list"></i>
+            <span>考试</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('drive')">
+            <i class="fas fa-car"></i>
+            <span>实战</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('profile')">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script>
+        function loadPage(page) {
+            window.location.href = `./${page}.html`;
+        }
+    </script>
+</body>
+</html>

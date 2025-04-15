@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>驾考通</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4f46e5",
+                        secondary: "#10b981",
+                        light: "#f0f4f8",
+                        dark: "#1e293b",
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .subject-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 12px;
+        }
+        .subject-tab {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #64748b;
+            position: relative;
+        }
+        .subject-tab.active {
+            color: #4f46e5;
+            font-weight: 500;
+        }
+        .subject-tab.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: #4f46e5;
+        }
+        .tab-bar {
+            height: 56px;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748b;
+            font-size: 10px;
+            transition: all 0.2s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        .tab-item.active {
+            color: #4f46e5;
+            background: rgba(79, 70, 229, 0.05);
+        }
+        .tab-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        .mock-img {
+            background: linear-gradient(45deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+            background-size: 200% 200%;
+            animation: gradient 2s ease infinite;
+            border-radius: 8px;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="bg-light min-h-screen pb-16">
+    <div class="p-4">
+        <div class="card p-4 mb-4">
+            <div class="subject-tabs">
+                <div class="subject-tab active" onclick="switchSubject('k1')">科目一</div>
+                <div class="subject-tab" onclick="switchSubject('k4')">科目四</div>
+            </div>
+            
+            <div id="subject-k1">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg text-dark">我的学习进度</h2>
+                    <span class="text-sm text-primary">科目一</span>
+                </div>
+                <div class="flex justify-around text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-primary">68%</div>
+                        <div class="text-xs text-gray-500">总进度</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-dark">87%</div>
+                        <div class="text-xs text-gray-500">正确率</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-dark">124</div>
+                        <div class="text-xs text-gray-500">已做题</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="subject-k4" class="hidden">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg text-dark">我的学习进度</h2>
+                    <span class="text-sm text-secondary">科目四</span>
+                </div>
+                <div class="flex justify-around text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-secondary">42%</div>
+                        <div class="text-xs text-gray-500">总进度</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-dark">76%</div>
+                        <div class="text-xs text-gray-500">正确率</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-dark">89</div>
+                        <div class="text-xs text-gray-500">已做题</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="card p-4 flex items-center bg-blue-50">
+                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-bolt text-blue-500"></i>
+                </div>
+                <div>
+                    <div class="font-medium text-dark">智能刷题</div>
+                    <div class="text-xs text-gray-500">薄弱环节专项</div>
+                </div>
+            </div>
+            <div class="card p-4 flex items-center bg-purple-50">
+                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-clipboard-check text-purple-500"></i>
+                </div>
+                <div>
+                    <div class="font-medium text-dark">模拟考试</div>
+                    <div class="text-xs text-gray-500">全真环境测试</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="font-bold text-lg mb-2 text-dark">今日推荐</h3>
+        <div class="card overflow-hidden mb-4">
+            <div class="mock-img w-full h-32"></div>
+            <div class="p-3">
+                <div class="font-medium mb-1 text-dark">交通标志专项</div>
+                <div class="text-xs text-gray-500 mb-2">掌握所有禁令标志和指示标志</div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5">
+                    <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>45% 已完成</span>
+                    <span>32/70题</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="#" class="tab-item active" onclick="loadPage('home')">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('learn')">
+            <i class="fas fa-book-open"></i>
+            <span>学习</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('exam')">
+            <i class="fas fa-clipboard-list"></i>
+            <span>考试</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('drive')">
+            <i class="fas fa-car"></i>
+            <span>实战</span>
+        </a>
+        <a href="#" class="tab-item" onclick="loadPage('profile')">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script>
+        function switchSubject(subject) {
+            document.querySelectorAll('.subject-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            document.getElementById('subject-k1').classList.add('hidden');
+            document.getElementById('subject-k4').classList.add('hidden');
+            document.getElementById('subject-' + subject).classList.remove('hidden');
+        }
+
+        function loadPage(page) {
+            window.location.href = `./${page}.html`;
+        }
+    </script>
+</body>
+</html>

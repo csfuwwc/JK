@@ -38,6 +38,8 @@
             bottom: 0;
             left: 0;
             right: 0;
+            max-width: 768px;
+            margin: 0 auto;
         }
         .tab-item {
             display: flex;
@@ -57,10 +59,20 @@
             font-size: 20px;
             margin-bottom: 4px;
         }
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-light min-h-screen pb-16">
-    <div class="p-4">
+    <div class="container">
         <div class="card p-4 mb-4">
             <div class="flex items-center">
                 <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mr-4">

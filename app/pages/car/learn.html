@@ -27,6 +27,30 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.03);
         }
+        .subject-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 12px;
+        }
+        .subject-tab {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #64748b;
+            position: relative;
+        }
+        .subject-tab.active {
+            color: #4f46e5;
+            font-weight: 500;
+        }
+        .subject-tab.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: #4f46e5;
+        }
         .tab-bar {
             height: 56px;
             background: white;
@@ -38,6 +62,8 @@
             bottom: 0;
             left: 0;
             right: 0;
+            max-width: 768px;
+            margin: 0 auto;
         }
         .tab-item {
             display: flex;
@@ -57,86 +83,95 @@
             font-size: 20px;
             margin-bottom: 4px;
         }
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-light min-h-screen pb-16">
-    <div class="p-4">
+    <div class="container">
         <div class="card p-4 mb-4">
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="font-bold text-lg text-dark">交通信号</h2>
-                <span class="text-sm text-primary">已完成 78%</span>
+            <div class="subject-tabs">
+                <div class="subject-tab active" onclick="switchSubject('k1')">科目一</div>
+                <div class="subject-tab" onclick="switchSubject('k4')">科目四</div>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-1.5">
-                <div class="bg-primary h-1.5 rounded-full" style="width: 78%"></div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-traffic-light text-orange-500 text-xl"></i>
+            
+            <div id="subject-k1">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg text-dark">章节学习</h2>
+                    <span class="text-sm text-primary">科目一</span>
                 </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">交通信号灯</div>
-                    <div class="text-xs text-gray-500">已完成 85%</div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-sign text-blue-500 text-xl"></i>
-                </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">交通标志</div>
-                    <div class="text-xs text-gray-500">已完成 72%</div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-hand-paper text-green-500 text-xl"></i>
-                </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">交警手势</div>
-                    <div class="text-xs text-gray-500">已完成 65%</div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-road text-purple-500 text-xl"></i>
-                </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">道路标线</div>
-                    <div class="text-xs text-gray-500">已完成 90%</div>
+                <div class="space-y-4">
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">交通信号</div>
+                            <div class="text-primary font-bold">75%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">交通标志</div>
+                            <div class="text-primary font-bold">60%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">安全驾驶</div>
+                            <div class="text-primary font-bold">45%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="card p-4 mb-4">
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="font-bold text-lg text-dark">安全驾驶</h2>
-                <span class="text-sm text-secondary">已完成 45%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-1.5">
-                <div class="bg-secondary h-1.5 rounded-full" style="width: 45%"></div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+            
+            <div id="subject-k4" class="hidden">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg text-dark">章节学习</h2>
+                    <span class="text-sm text-secondary">科目四</span>
                 </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">危险驾驶</div>
-                    <div class="text-xs text-gray-500">已完成 30%</div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i class="fas fa-car-crash text-yellow-500 text-xl"></i>
-                </div>
-                <div class="text-center">
-                    <div class="font-medium text-dark mb-1">事故处理</div>
-                    <div class="text-xs text-gray-500">已完成 60%</div>
+                <div class="space-y-4">
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">安全文明驾驶</div>
+                            <div class="text-secondary font-bold">30%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-secondary h-1.5 rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">恶劣天气驾驶</div>
+                            <div class="text-secondary font-bold">20%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-secondary h-1.5 rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <div class="card p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-medium text-dark">紧急情况处理</div>
+                            <div class="text-secondary font-bold">15%</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-secondary h-1.5 rounded-full" style="width: 15%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,6 +202,17 @@
     </div>
 
     <script>
+        function switchSubject(subject) {
+            document.querySelectorAll('.subject-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            document.getElementById('subject-k1').classList.add('hidden');
+            document.getElementById('subject-k4').classList.add('hidden');
+            document.getElementById('subject-' + subject).classList.remove('hidden');
+        }
+
         function loadPage(page) {
             window.location.href = `./${page}.html`;
         }
